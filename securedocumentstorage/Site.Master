@@ -1,0 +1,251 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="securedocumentstorage.SiteMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Secure Document Storage System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f8ff;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            background: linear-gradient(to right, #0d47a1, #1565c0);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #bbdefb;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a,
+        .nav-links .aspNetDisabled {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #bbdefb;
+        }
+
+        .auth-buttons {
+            margin-left: 30px;
+        }
+
+        .btn {
+            padding: 6px 15px;
+            border-radius: 5px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-left: 10px;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #0d47a1;
+        }
+
+        /* ================= HERO SECTION ================= */
+
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(13,71,161,0.8), rgba(21,101,192,0.8)),
+                        url("secure-bg.png");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding-left: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .primary-btn {
+            padding: 10px 25px;
+            background: #42a5f5;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .primary-btn:hover {
+            background: #1e88e5;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features-section {
+            padding: 60px 80px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            margin-bottom: 40px;
+            color: #0d47a1;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-box h4 {
+            margin-bottom: 10px;
+            color: #1565c0;
+        }
+
+        .feature-box p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            background: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<form runat="server">
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">
+            🔒 Secure<span>DocStore</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="Default.aspx">Home</a>
+            <a href="About.aspx">About Us</a>
+            <a href="Features.aspx">Features</a>
+            <a href="Contact.aspx">Contact Us</a>
+            <a href="Feedback.aspx">Feedback</a>
+
+            <div class="auth-buttons">
+                <asp:Button ID="btnLogin" runat="server" Text="Login"
+                    CssClass="btn" OnClick="lnkLogin_Click" />
+                <asp:Button ID="btnRegister" runat="server" Text="Register"
+                    CssClass="btn" OnClick="lnkRegister_Click" />
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Secure Document Storage System</h1>
+            <p>
+                Store and protect your confidential files safely with advanced encryption,
+                secure authentication, and reliable cloud-based access.
+            </p>
+            <asp:Button ID="btnGetStarted" runat="server"
+                Text="Get Started" CssClass="primary-btn"
+                OnClick="lnkRegister_Click" />
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features-section">
+        <h2>Our Features</h2>
+
+        <div class="features">
+            <div class="feature-box">
+                <h4>🔐 Encrypted Storage</h4>
+                <p>Advanced encryption technology ensures complete protection of your files.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>☁ Easy Access</h4>
+                <p>Access your documents securely from anywhere on any device.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>💾 Data Backup</h4>
+                <p>Automatic backups prevent data loss and ensure reliability.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2026 Secure Document Storage System | All Rights Reserved
+    </div>
+
+</form>
+</body>
+</html>
